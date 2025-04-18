@@ -166,17 +166,22 @@
             const fullscreenIcon = document.getElementById('fullscreenIcon');
             
             // Configuration
-            const totalSlides = 20;
+            const totalSlides = 21;
             let currentSlideIndex = 0;
             
             // Update the total slides display
             totalSlidesEl.textContent = totalSlides;
-            
+
             // Create iframes for all slides
+            const slideFilenames = [
+                'The_Home_Healthcare_Journey_with_AI_2025_Updated_intro.html',
+                ...Array.from({length: 20}, (_, i) => `The_Home_Healthcare_Journey_with_AI_2025_Updated_${i}.html`)
+            ];
+
             for (let i = 0; i < totalSlides; i++) {
                 const iframe = document.createElement('iframe');
                 iframe.className = 'slide-frame';
-                iframe.src = `The_Home_Healthcare_Journey_with_AI_2025_Updated_${i}.html`;
+                iframe.src = slideFilenames[i];
                 iframe.setAttribute('frameborder', '0');
                 iframe.setAttribute('scrolling', 'no');
                 iframe.setAttribute('allowfullscreen', 'true');

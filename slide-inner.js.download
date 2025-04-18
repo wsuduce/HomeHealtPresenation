@@ -1,0 +1,430 @@
+function sendHeight() {
+  try {
+    const height =
+      document.documentElement.scrollHeight || document.body.scrollHeight
+    window.parent.postMessage(
+      {
+        type: 'resize',
+        height: height,
+        url: window.location.href,
+      },
+      '*'
+    )
+  } catch (error) {
+    console.error('向父页面发送高度时出错:', error)
+  }
+}
+
+function getHeight() {
+  return document.documentElement.scrollHeight || document.body.scrollHeight
+}
+
+window.addEventListener('load', sendHeight)
+
+window.addEventListener('resize', sendHeight)
+
+sendHeight()
+
+const EDIT_SLIDE_CONSTANT = {
+  PostMessageOrigin: '*',
+  ParentOriginList: [
+    'http://localhost:3000',
+    'https://www.coswift.ai',
+    'https://www.genspark.ai',
+  ],
+  CurEleId: 'slide-edit-cur-ele-id',
+  CurClickEleId: 'slide-edit-cur-click-ele-id',
+  StyleId: 'slide-selected-style',
+}
+
+const POST_MESSAGE_EVENT_TYPE = {
+  SlideElementClicked: 'SLIDE_ELEMENT_CLICKED',
+  SlideSaveImageClicked: 'SLIDE_SAVE_IMAGE_CLICKED',
+  SlideCancelImageClicked: 'SLIDE_CANCEL_IMAGE_CLICKED',
+  SlideCancelEdit: 'SLIDE_CANCEL_EDIT',
+  SlideUpdateHtml: 'SLIDE_UPDATE_HTML',
+  SlideEditMode: 'SLIDE_EDIT_MODE',
+  SlideSaveTextContent: 'SLIDE_SAVE_TEXT_CONTENT',
+  SlideRefreshIframe: 'SLIDE_REFRESH_IFRAME',
+  SlideCancelHoverEdit: 'SLIDE_CANCEL_HOVER_EDIT',
+}
+
+let isCanEditSlide = false
+
+function slideSelectedStyle() {
+  const style = document.createElement('style')
+  style.setAttribute('id', EDIT_SLIDE_CONSTANT.StyleId)
+  style.textContent = `
+  [data-slide-selected]::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    padding: 4px;
+    border-radius: 0px;
+    outline: 2px solid #0f7fff !important;
+    z-index: 10000;
+    pointer-events: none;
+  }
+
+  [data-slide-selected] {
+    position: relative;
+    outline: none;
+    cursor: default;
+  }
+
+  img[data-slide-selected],
+  [item-slide-selected] {
+    border: 2px solid #0f7fff !important;
+  }
+
+
+`
+  document.head.appendChild(style)
+}
+
+function postMessageToParent(data) {
+  window.parent.postMessage(data, EDIT_SLIDE_CONSTANT.PostMessageOrigin)
+}
+
+function SlideUpdateHtml() {
+  let content = document.documentElement.outerHTML
+  const parser = new DOMParser()
+  const doc = parser.parseFromString(content, 'text/html')
+  const dom = doc.getElementById(EDIT_SLIDE_CONSTANT.CurEleId)
+  if (dom) {
+    // dom.removeAttribute('contenteditable')
+    dom.removeAttribute('data-slide-selected')
+    dom.removeAttribute('id')
+    dom.removeAttribute('item-slide-selected')
+  }
+  const domClick = doc.getElementById(EDIT_SLIDE_CONSTANT.CurClickEleId)
+  if (domClick) {
+    // domClick.removeAttribute('contenteditable')
+    domClick.removeAttribute('data-slide-selected')
+    domClick.removeAttribute('id')
+    domClick.removeAttribute('item-slide-selected')
+  }
+  const domStyle = doc.getElementById(EDIT_SLIDE_CONSTANT.StyleId)
+  if (domStyle) {
+    domStyle.parentNode.removeChild(domStyle)
+  }
+  content = doc.documentElement.outerHTML
+  postMessageToParent({
+    type: POST_MESSAGE_EVENT_TYPE.SlideUpdateHtml,
+    payload: {
+      iframeId: window.location.href,
+      content: content,
+    },
+  })
+}
+
+function handlerImgEdit(target) {
+  target.setAttribute('data-slide-selected', true)
+  target.setAttribute('id', EDIT_SLIDE_CONSTANT.CurClickEleId)
+
+  postMessageToParent({
+    type: POST_MESSAGE_EVENT_TYPE.SlideElementClicked,
+    payload: {
+      id: EDIT_SLIDE_CONSTANT.CurClickEleId,
+      iframeId: window.location.href,
+      elementType: 'img',
+      attrs: {
+        src: target.getAttribute('src'),
+      },
+    },
+  })
+}
+
+function removeTextAttribute(target) {
+  // target.removeAttribute('contenteditable')
+  target.removeAttribute('data-slide-selected')
+  target.removeAttribute('id')
+  target.removeAttribute('item-slide-selected')
+}
+
+function removeImgAttribute(target) {
+  target.removeAttribute('data-slide-selected')
+  target.removeAttribute('id')
+  target.removeAttribute('item-slide-selected')
+}
+
+function removeNoCurClickEleAttributes() {
+  const dom = document.getElementById(EDIT_SLIDE_CONSTANT.CurEleId)
+  if (dom) {
+    // dom.removeAttribute('contenteditable')
+    dom.removeAttribute('data-slide-selected')
+    dom.removeAttribute('id')
+    dom.removeAttribute('item-slide-selected')
+  }
+}
+
+function removeHoverSelectedEleAttributes() {
+  const dom = document.getElementById(EDIT_SLIDE_CONSTANT.CurEleId)
+  if (dom) {
+    removeTextAttribute(dom)
+    removeImgAttribute(dom)
+  }
+}
+
+function removeSelectedEleAttributes() {
+  removeHoverSelectedEleAttributes()
+  const domClick = document.getElementById(EDIT_SLIDE_CONSTANT.CurClickEleId)
+  if (domClick) {
+    removeTextAttribute(domClick)
+    removeImgAttribute(domClick)
+  }
+}
+
+function addElementSelectedMouseover(target) {
+  target.setAttribute('item-slide-selected', true)
+  if (target.id !== EDIT_SLIDE_CONSTANT.CurClickEleId) {
+    target.setAttribute('id', EDIT_SLIDE_CONSTANT.CurEleId)
+  }
+}
+
+function handlerTextMouseover(target) {
+  target.setAttribute('data-slide-selected', true)
+  if (target.id !== EDIT_SLIDE_CONSTANT.CurClickEleId) {
+    target.setAttribute('id', EDIT_SLIDE_CONSTANT.CurEleId)
+  }
+}
+
+function handlerImgMouseover(target) {
+  target.setAttribute('data-slide-selected', true)
+  if (target.id !== EDIT_SLIDE_CONSTANT.CurClickEleId) {
+    target.setAttribute('id', EDIT_SLIDE_CONSTANT.CurEleId)
+  }
+}
+
+function uploadTextContent(event) {
+  SlideUpdateHtml()
+  postMessageToParent({
+    type: POST_MESSAGE_EVENT_TYPE.SlideElementClicked,
+    payload: {
+      id: EDIT_SLIDE_CONSTANT.CurClickEleId,
+      iframeId: window.location.href,
+      elementType: 'text',
+      attrs: {
+        text: event.target.textContent,
+      },
+    },
+  })
+}
+
+function getUniqueSelector(target) {
+  if (!(target instanceof Element)) return null
+
+  const path = []
+  let el = target
+  while (el && el.nodeType === 1 && el !== document.documentElement) {
+    const parent = el.parentNode
+    const tag = el.tagName.toLowerCase()
+
+    if (!parent) break
+
+    // 获取当前元素在父元素中的所有子元素的位置（包括不同 tag）
+    const siblings = Array.from(parent.children)
+    const index = siblings.indexOf(el) + 1
+
+    path.unshift(`${tag}:nth-child(${index})`)
+    el = parent
+  }
+
+  return path.join(' > ')
+}
+
+function addElementSelectedClick(target) {
+  target.setAttribute('id', EDIT_SLIDE_CONSTANT.CurClickEleId)
+  target.setAttribute('item-slide-selected')
+  postMessageToParent({
+    type: POST_MESSAGE_EVENT_TYPE.SlideElementClicked,
+    payload: {
+      id: EDIT_SLIDE_CONSTANT.CurClickEleId,
+      iframeId: window.location.href,
+      elementType: 'container',
+      domPath: getUniqueSelector(target),
+    },
+  })
+}
+
+function handlerTextEdit(target) {
+  const hasTextNode = Array.from(target.childNodes).some(
+    node => node.nodeType === Node.TEXT_NODE && node.textContent.trim()
+  )
+  target.setAttribute('data-slide-selected', true)
+  target.setAttribute('id', EDIT_SLIDE_CONSTANT.CurClickEleId)
+  if (!hasTextNode) {
+    postMessageToParent({
+      type: POST_MESSAGE_EVENT_TYPE.SlideElementClicked,
+      payload: {
+        id: EDIT_SLIDE_CONSTANT.CurClickEleId,
+        iframeId: window.location.href,
+        elementType: 'container',
+        domPath: getUniqueSelector(target),
+      },
+    })
+    return
+  }
+  // target.focus()
+  // target.addEventListener('input', uploadTextContent)
+  postMessageToParent({
+    type: POST_MESSAGE_EVENT_TYPE.SlideElementClicked,
+    payload: {
+      id: EDIT_SLIDE_CONSTANT.CurClickEleId,
+      iframeId: window.location.href,
+      elementType: 'text',
+      attrs: {
+        text: target.textContent,
+      },
+    },
+  })
+}
+
+function slideEidtPostMessage() {
+  function hanlderElementMouseover(event) {
+    if (!isCanEditSlide) {
+      return
+    }
+
+    const target = event.target
+    removeNoCurClickEleAttributes()
+
+    if (target.textContent && target.textContent.trim().length > 0) {
+      handlerTextMouseover(target)
+    } else if (target.tagName === 'IMG') {
+      handlerImgMouseover(target)
+    } else if (target) {
+      addElementSelectedMouseover(target)
+    }
+  }
+
+  function hanlderElementClick(event) {
+    if (!isCanEditSlide) {
+      return
+    }
+    const target = event.target
+    removeSelectedEleAttributes()
+
+    if (target.textContent && target.textContent.trim().length > 0) {
+      handlerTextEdit(target)
+    } else if (target.tagName === 'IMG') {
+      handlerImgEdit(target)
+    } else if (target) {
+      addElementSelectedClick(target)
+    }
+  }
+
+  function hanlderMessage(event) {
+    if (!EDIT_SLIDE_CONSTANT.ParentOriginList.includes(event.origin)) {
+      return
+    }
+
+    if (event.data.type === POST_MESSAGE_EVENT_TYPE.SlideEditMode) {
+      isCanEditSlide = event.data.payload.isCanEditSlide
+      if (!isCanEditSlide) {
+        removeSelectedEleAttributes()
+      }
+    }
+
+    if (event.data.type === POST_MESSAGE_EVENT_TYPE.SlideSaveTextContent) {
+      let dom = document.getElementById(event.data.payload.id)
+      if (dom) {
+        dom.textContent = event.data.payload.attrs.text
+        SlideUpdateHtml()
+      }
+    }
+
+    if (event.data.type === POST_MESSAGE_EVENT_TYPE.SlideSaveImageClicked) {
+      let img = document.getElementById(EDIT_SLIDE_CONSTANT.CurClickEleId)
+      if (img) {
+        img.setAttribute('src', event.data.payload.attrs.src)
+        // removeSelectedEleAttributes(img)
+        SlideUpdateHtml()
+      }
+    }
+    if (event.data.type === POST_MESSAGE_EVENT_TYPE.SlideCancelImageClicked) {
+      let img = document.getElementById(event.data.payload.id)
+      removeSelectedEleAttributes(img)
+    }
+    if (event.data.type === POST_MESSAGE_EVENT_TYPE.SlideCancelEdit) {
+      let dom = document.getElementById(EDIT_SLIDE_CONSTANT.CurEleId)
+      removeSelectedEleAttributes(dom)
+      let domClick = document.getElementById(EDIT_SLIDE_CONSTANT.CurClickEleId)
+      removeSelectedEleAttributes(domClick)
+    }
+    if (event.data.type === POST_MESSAGE_EVENT_TYPE.SlideCancelHoverEdit) {
+      removeHoverSelectedEleAttributes()
+    }
+
+    // 处理父页面调用子页面函数的消息
+    if (event.data.type === 'PARENT_CALL_FUNCTION') {
+      console.log('PARENT_CALL_FUNCTION', event.data)
+      const { functionName, args = [], callbackId } = event.data.payload || {}
+
+      // 可被父页面调用的函数列表
+      const exposedFunctions = {
+        getHeight,
+        // 可以继续添加其他想要暴露给父页面的函数
+      }
+
+      if (exposedFunctions[functionName]) {
+        try {
+          // 执行被调用的函数
+          const result = exposedFunctions[functionName](...args)
+
+          // 向父页面返回执行结果
+          if (callbackId) {
+            postMessageToParent({
+              type: 'PARENT_CALL_FUNCTION_RESPONSE',
+              payload: {
+                callbackId,
+                success: true,
+                result,
+              },
+            })
+          }
+        } catch (error) {
+          console.error(`执行函数 ${functionName} 时出错:`, error)
+
+          // 向父页面返回错误信息
+          if (callbackId) {
+            postMessageToParent({
+              type: 'PARENT_CALL_FUNCTION_RESPONSE',
+              payload: {
+                callbackId,
+                success: false,
+                error: error.message,
+              },
+            })
+          }
+        }
+      }
+    }
+
+    if (event.data.type === POST_MESSAGE_EVENT_TYPE.SlideRefreshIframe) {
+      window.location.reload()
+    }
+  }
+
+  document.addEventListener('mouseover', hanlderElementMouseover)
+  document.addEventListener('click', hanlderElementClick)
+  window.addEventListener('message', hanlderMessage)
+}
+
+function slideSelectedEdit() {
+  slideSelectedStyle()
+  slideEidtPostMessage()
+}
+
+/**
+ * 1.hover的时候，每个元素都增加边框，但是不增加编辑态
+ * 2.hover到别的元素的时候，移除非选中态的边框，文字和图片都要包含
+ * 3.点击的时候，移除所有元素的边框，增加点击元素的边框，并且增加contenteditable，编辑为点击态
+ * 4.点击的时候其他所有元素的选中态都取消
+ * 5.保存或者图片取消或者保存的时候，取消所有元素的边框和编辑态
+ */
+slideSelectedEdit()

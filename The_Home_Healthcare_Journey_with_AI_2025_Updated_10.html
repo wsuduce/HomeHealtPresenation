@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<!-- saved from url=(0131)https://page.genspark.site/slides_tool_call/toolu_014P5PiQDUtWaKKKiVmXG6q9/The_Home_Healthcare_Journey_with_AI_2025_Updated_10.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Home Healthcare Journey with AI - Slide 11</title>
+    <link href="./tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .accent-line {
+            position: absolute;
+            height: 8px;
+            background: linear-gradient(90deg, #0bc5ea 0%, #06b6d4 100%);
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+        
+        .automation-card {
+            background-color: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .automation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            background-color: rgba(6, 182, 212, 0.15);
+        }
+        
+        .automation-icon {
+            background: linear-gradient(135deg, #0bc5ea 0%, #06b6d4 100%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 10px rgba(6, 182, 212, 0.3);
+        }
+        
+        .case-study {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.2) 0%, rgba(6, 182, 212, 0.1) 100%);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+        }
+        
+        .comparison-row {
+            display: flex;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .comparison-row:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+        
+        .ai-circle {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+            bottom: -100px;
+            right: -100px;
+            z-index: 0;
+        }
+        
+        .circle-sm {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+            top: 100px;
+            left: -50px;
+            z-index: 0;
+        }
+        
+        .time-bar {
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            margin: 8px 0;
+            position: relative;
+        }
+        
+        .time-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #0bc5ea 0%, #06b6d4 100%);
+            border-radius: 5px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+<style id="slide-selected-style">
+  [data-slide-selected]::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    padding: 4px;
+    border-radius: 0px;
+    outline: 2px solid #0f7fff !important;
+    z-index: 10000;
+    pointer-events: none;
+  }
+
+  [data-slide-selected] {
+    position: relative;
+    outline: none;
+    cursor: default;
+  }
+
+  img[data-slide-selected],
+  [item-slide-selected] {
+    border: 2px solid #0f7fff !important;
+  }
+
+
+</style></head>
+<body>
+    <div class="slide-container flex flex-col relative">
+        <div class="accent-line"></div>
+        <div class="circle-sm"></div>
+        <div class="ai-circle"></div>
+        
+        <div class="z-10 flex-grow">
+            <!-- Header -->
+            <div class="mb-6">
+                <h2 class="text-4xl font-bold leading-tight">Documentation &amp; Scheduling Automation</h2>
+                <div class="w-24 h-1 bg-cyan-400 mt-2"></div>
+            </div>
+            
+            <!-- Description -->
+            <div class="mb-6">
+                <p class="text-xl">AI is streamlining administrative burdens that consume up to 25% of caregivers' time, enabling more focus on direct patient care.</p>
+            </div>
+            
+            <!-- Two Main Categories -->
+            <div class="grid grid-cols-2 gap-8 mb-6">
+                <!-- Documentation Automation -->
+                <div class="automation-card">
+                    <div class="automation-icon">
+                        <i class="fas fa-file-medical-alt text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">AI Documentation Assistants</h3>
+                    <p class="mb-4">Speech recognition and ambient documentation tools capture clinical conversations and generate structured notes.</p>
+                    
+                    <div class="space-y-3">
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle text-cyan-400 mt-1 mr-2"></i>
+                            <p class="text-sm">50% reduction in charting time</p>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle text-cyan-400 mt-1 mr-2"></i>
+                            <p class="text-sm">45% fewer documentation errors</p>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle text-cyan-400 mt-1 mr-2"></i>
+                            <p class="text-sm">88 minutes saved per patient care episode</p>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle text-cyan-400 mt-1 mr-2"></i>
+                            <p class="text-sm">$73 labor cost savings per patient</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 bg-gray-700 bg-opacity-60 p-3 rounded-lg">
+                        <p class="text-center text-cyan-300 font-medium">Technologies: Nuance DAX, Amazon Transcribe Medical, Pinnacle's ybot</p>
+                    </div>
+                </div>
+                
+                <!-- Scheduling Automation -->
+                <div class="automation-card">
+                    <div class="automation-icon">
+                        <i class="fas fa-calendar-alt text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">AI-Powered Scheduling</h3>
+                    <p class="mb-4">Advanced algorithms match caregivers to patients based on skills, location, and preferences while optimizing routes.</p>
+                    
+                    <div class="space-y-3">
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle text-cyan-400 mt-1 mr-2"></i>
+                            <p class="text-sm">Up to 95% of scheduling tasks automated</p>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle text-cyan-400 mt-1 mr-2"></i>
+                            <p class="text-sm">15% reduction in travel mileage costs</p>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle text-cyan-400 mt-1 mr-2"></i>
+                            <p class="text-sm">Improved continuity of care for patients</p>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle text-cyan-400 mt-1 mr-2"></i>
+                            <p class="text-sm">Automated reassignment when caregivers call out</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 bg-gray-700 bg-opacity-60 p-3 rounded-lg">
+                        <p class="text-center text-cyan-300 font-medium">Technologies: AlayaCare, Homecare Homebase Smart Scheduling</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Case Study -->
+            <div class="case-study">
+                <h3 class="text-xl font-semibold text-cyan-300 mb-3">Impact on Caregiver Workload</h3>
+                
+                <div class="grid grid-cols-2 gap-6">
+                    <!-- Left side: Workday distribution -->
+                    <div>
+                        <h4 class="font-medium mb-3">Caregiver Time Distribution Comparison</h4>
+                        
+                        <div class="mb-5">
+                            <p class="flex justify-between mb-1">
+                                <span>Traditional Process:</span>
+                                <span>8-hour shift</span>
+                            </p>
+                            <div class="grid grid-cols-4 gap-1">
+                                <div class="bg-red-400 h-6 rounded-l-md flex items-center justify-center text-xs font-medium">25%</div>
+                                <div class="bg-yellow-400 h-6 flex items-center justify-center text-xs font-medium">15%</div>
+                                <div class="bg-green-400 h-6 rounded-r-md flex items-center justify-center text-xs font-medium text-gray-800">60%</div>
+                            </div>
+                            <div class="flex text-xs mt-1 text-gray-300">
+                                <span class="w-1/4">Documentation</span>
+                                <span class="w-1/4">Travel/Scheduling</span>
+                                <span class="w-2/4">Patient Care</span>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <p class="flex justify-between mb-1">
+                                <span>With AI Automation:</span>
+                                <span>8-hour shift</span>
+                            </p>
+                            <div class="grid grid-cols-4 gap-1">
+                                <div class="bg-red-400 h-6 rounded-l-md flex items-center justify-center text-xs font-medium">12%</div>
+                                <div class="bg-yellow-400 h-6 flex items-center justify-center text-xs font-medium">8%</div>
+                                <div class="bg-green-400 h-6 rounded-r-md flex items-center justify-center text-xs font-medium text-gray-800">80%</div>
+                            </div>
+                            <div class="flex text-xs mt-1 text-gray-300">
+                                <span class="w-1/4">Documentation</span>
+                                <span class="w-1/4">Travel/Scheduling</span>
+                                <span class="w-2/4">Patient Care</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right side: Caregiver satisfaction -->
+                    <div>
+                        <h4 class="font-medium mb-3">Caregiver Satisfaction Results</h4>
+                        
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-1">
+                                <span>Very Satisfied with AI Assistant</span>
+                                <span class="text-cyan-300 font-medium">57%</span>
+                            </div>
+                            <div class="time-bar">
+                                <div class="time-progress" style="width: 57%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-1">
+                                <span>Improved Work/Life Balance</span>
+                                <span class="text-cyan-300 font-medium">64%</span>
+                            </div>
+                            <div class="time-bar">
+                                <div class="time-progress" style="width: 64%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-1">
+                                <span>Little to No After-Hours Documentation</span>
+                                <span class="text-cyan-300 font-medium">71%</span>
+                            </div>
+                            <div class="time-bar">
+                                <div class="time-progress" style="width: 71%"></div>
+                            </div>
+                        </div>
+                        
+                        <p class="text-sm italic">
+                            "Automation streamlines the tedious and amplifies the meaningful in home care delivery."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="mt-auto flex justify-between items-center z-10">
+            <div class="text-sm opacity-75">
+                <i class="fas fa-home mr-1"></i> impactme.ai
+            </div>
+            <div class="flex items-center text-sm opacity-75">
+                <i class="fas fa-calendar-alt mr-1"></i>
+                <span>April 27-29, 2025</span>
+                <span class="mx-2">|</span>
+                <span>The Marcus Whitman, Walla Walla, WA</span>
+            </div>
+        </div>
+    </div>
+
+<script src="./slide-inner.js.download"></script>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDoJDV7hbDtUq68QkA884fhKHlKcsIp9QQ1N9sdgLqV9rocCcJtmrJ9DoN4nKLW%2FSfzjNah1xrnhSAK9eGYwatZ%2FQVS%2FiNglXR%2B6H4WPL%2Fv1OTyLmshnqUiQ5al64bErlVvjZuunfbkT7YBd3U88QkCajInWPw%2B9vhmEtgVVtHZ6K3o8Xkh2e67jNLTNfhlqRfHu1KMQGYJv5p4XDopUAu5%2B%2Bp9wFlWetKwG%2FvOKZoQ6Jm9uZ%2BD1fxXclzV2QX3jKyItPpmVXzxQpgUDKRMxOkPKjo0B8g1uYTznod2P4fasL5nKk4XYOq1wGO9%2BNF1U9c8mTJ6J6MLnrrh%2BDBTkYt%2B%2BzQhExQ0LNcsJGCyZNZ%2Frr4KaZDHJiJ4PgNX4NYFmRzcnPwjYCqurRTlu1yDi5oYrnsZ%2FJMoFDrWXARGIKSmG%2F4JcYjy08noJY%2BQeS8kjT%2BK5kdbC1oZtpzizgTikMcPrCl4fy9o5xRMG%2Fb8c%2BZ0%2BWZ75lVk3ZiWbIzR3Tar5hdBQa7Ll%2BpcgqxrPU5oUTBswbBCdaEWPn56FAwZcR8vOm%2B8cyYOQHVoySoS7upkiuL0wzsRkunt2UPpc8ISVYxAvBk77CdAg3N%2BJObW4gb16HRWUu51R3ll%2FQhsJOAfMGCTfTURoKPTfv%2FBhAB1RCupjuQz21rm3P6XRo3JzBOccjTVSjPhCoVDraprEgnmUDuQ%3D%3D";
+        window.__genspark_locale = "en-US";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDoJDV7hbDtUq68QkA884fhKHlKcsIp9QQ1N9sdgLqV9rocCcJtmrJ9DoN4nKLW/SfzjNah1xrnhSAK9eGYwatZ/QVS/iNglXR+6H4WPL/v1OTyLmshnqUiQ5al64bErlVvjZuunfbkT7YBd3U88QkCajInWPw+9vhmEtgVVtHZ6K3o8Xkh2e67jNLTNfhlqRfHu1KMQGYJv5p4XDopUAu5++p9wFlWetKwG/vOKZoQ6Jm9uZ+D1fxXclzV2QX3jKyItPpmVXzxQpgUDKRMxOkPKjo0B8g1uYTznod2P4fasL5nKk4XYOq1wGO9+NF1U9c8mTJ6J6MLnrrh+DBTkYt++zQhExQ0LNcsJGCyZNZ/rr4KaZDHJiJ4PgNX4NYFmRzcnPwjYCqurRTlu1yDi5oYrnsZ/JMoFDrWXARGIKSmG/4JcYjy08noJY+QeS8kjT+K5kdbC1oZtpzizgTikMcPrCl4fy9o5xRMG/b8c+Z0+WZ75lVk3ZiWbIzR3Tar5hdBQa7Ll+pcgqxrPU5oUTBswbBCdaEWPn56FAwZcR8vOm+8cyYOQHVoySoS7upkiuL0wzsRkunt2UPpc8ISVYxAvBk77CdAg3N+JObW4gb16HRWUu51R3ll/QhsJOAfMGCTfTURoKPTfv/BhAB1RCupjuQz21rm3P6XRo3JzBOccjTVSjPhCoVDraprEgnmUDuQ==";
+    </script>
+    </body></html>

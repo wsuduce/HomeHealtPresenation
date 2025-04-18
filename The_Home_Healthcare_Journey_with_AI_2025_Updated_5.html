@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<!-- saved from url=(0130)https://page.genspark.site/slides_tool_call/toolu_014P5PiQDUtWaKKKiVmXG6q9/The_Home_Healthcare_Journey_with_AI_2025_Updated_5.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Home Healthcare Journey with AI - Slide 6</title>
+    <link href="./tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .accent-line {
+            position: absolute;
+            height: 8px;
+            background: linear-gradient(90deg, #0bc5ea 0%, #06b6d4 100%);
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+        
+        .smart-home-card {
+            background-color: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .smart-home-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            background-color: rgba(6, 182, 212, 0.15);
+        }
+        
+        .smart-home-card::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #0bc5ea 0%, #06b6d4 100%);
+        }
+        
+        .card-icon {
+            font-size: 2.5rem;
+            color: #0bc5ea;
+            margin-bottom: 16px;
+        }
+        
+        .home-diagram {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 12px;
+            background-color: rgba(6, 182, 212, 0.1);
+            overflow: hidden;
+        }
+        
+        .home-room {
+            padding: 16px;
+            position: relative;
+        }
+        
+        .connection-line {
+            position: absolute;
+            background-color: rgba(6, 182, 212, 0.5);
+            z-index: 0;
+        }
+        
+        .tech-point {
+            width: 10px;
+            height: 10px;
+            background-color: #0bc5ea;
+            border-radius: 50%;
+            position: absolute;
+        }
+        
+        .ai-circle {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+            bottom: -100px;
+            right: -100px;
+            z-index: 0;
+        }
+        
+        .circle-sm {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+            top: 100px;
+            left: -50px;
+            z-index: 0;
+        }
+        
+        .stat-box {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.2) 0%, rgba(6, 182, 212, 0.1) 100%);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+        }
+    </style>
+<style id="slide-selected-style">
+  [data-slide-selected]::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    padding: 4px;
+    border-radius: 0px;
+    outline: 2px solid #0f7fff !important;
+    z-index: 10000;
+    pointer-events: none;
+  }
+
+  [data-slide-selected] {
+    position: relative;
+    outline: none;
+    cursor: default;
+  }
+
+  img[data-slide-selected],
+  [item-slide-selected] {
+    border: 2px solid #0f7fff !important;
+  }
+
+
+</style></head>
+<body>
+    <div class="slide-container flex flex-col relative">
+        <div class="accent-line"></div>
+        <div class="circle-sm"></div>
+        <div class="ai-circle"></div>
+        
+        <div class="z-10 flex-grow">
+            <!-- Header -->
+            <div class="mb-6">
+                <h2 class="text-4xl font-bold leading-tight">Smart Home Integration</h2>
+                <div class="w-24 h-1 bg-cyan-400 mt-2"></div>
+            </div>
+            
+            <!-- Description -->
+            <div class="mb-6">
+                <p class="text-xl">Connected environments that enable comprehensive health monitoring and assistance throughout the home.</p>
+            </div>
+            
+            <!-- Smart Home Diagram and Tech Cards -->
+            <div class="grid grid-cols-12 gap-6">
+                <!-- Main Diagram -->
+                <div class="col-span-7">
+                    <div class="home-diagram p-6 flex flex-col">
+                        <h3 class="text-xl font-semibold text-center mb-4 text-cyan-300">AI-Enabled Smart Home</h3>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="smart-home-card p-4">
+                                <div class="flex items-start">
+                                    <i class="fas fa-couch text-cyan-400 text-xl mr-3 mt-1"></i>
+                                    <div>
+                                        <h4 class="font-medium">Living Room</h4>
+                                        <p class="text-sm text-gray-300">Motion sensors, voice assistants, activity tracking cameras</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="smart-home-card p-4">
+                                <div class="flex items-start">
+                                    <i class="fas fa-bed text-cyan-400 text-xl mr-3 mt-1"></i>
+                                    <div>
+                                        <h4 class="font-medium">Bedroom</h4>
+                                        <p class="text-sm text-gray-300">Smart beds, sleep monitors, fall detection sensors</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="smart-home-card p-4">
+                                <div class="flex items-start">
+                                    <i class="fas fa-bath text-cyan-400 text-xl mr-3 mt-1"></i>
+                                    <div>
+                                        <h4 class="font-medium">Bathroom</h4>
+                                        <p class="text-sm text-gray-300">Smart toilets, fall detection, water usage tracking</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="smart-home-card p-4">
+                                <div class="flex items-start">
+                                    <i class="fas fa-utensils text-cyan-400 text-xl mr-3 mt-1"></i>
+                                    <div>
+                                        <h4 class="font-medium">Kitchen</h4>
+                                        <p class="text-sm text-gray-300">Nutrition tracking, medication dispensers, appliance usage</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Central Hub -->
+                        <div class="flex justify-center my-4">
+                            <div class="bg-cyan-400 bg-opacity-20 rounded-full p-4 border border-cyan-400">
+                                <i class="fas fa-brain text-cyan-400 text-3xl"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <span class="text-sm font-medium bg-cyan-400 bg-opacity-20 px-3 py-1 rounded-full">
+                                AI Hub: Data processing, pattern recognition, anomaly detection
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Stats and Details -->
+                <div class="col-span-5">
+                    <div class="stat-box mb-4">
+                        <h3 class="text-xl font-semibold text-cyan-300 mb-2">Technology Usage</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="w-2/3 pr-4">
+                                <p>Passive infrared sensors</p>
+                            </div>
+                            <div class="w-1/3">
+                                <div class="relative pt-1">
+                                    <div class="flex items-center justify-between">
+                                        <div class="text-right">
+                                            <span class="text-xs font-semibold inline-block text-cyan-300">62%</span>
+                                        </div>
+                                    </div>
+                                    <div class="overflow-hidden h-2 mb-1 text-xs flex rounded bg-gray-700">
+                                        <div style="width:62%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-cyan-400"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center mb-2">
+                            <div class="w-2/3 pr-4">
+                                <p>Voice-activated assistants</p>
+                            </div>
+                            <div class="w-1/3">
+                                <div class="relative pt-1">
+                                    <div class="flex items-center justify-between">
+                                        <div class="text-right">
+                                            <span class="text-xs font-semibold inline-block text-cyan-300">48%</span>
+                                        </div>
+                                    </div>
+                                    <div class="overflow-hidden h-2 mb-1 text-xs flex rounded bg-gray-700">
+                                        <div style="width:48%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-cyan-400"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-2/3 pr-4">
+                                <p>Environmental sensors</p>
+                            </div>
+                            <div class="w-1/3">
+                                <div class="relative pt-1">
+                                    <div class="flex items-center justify-between">
+                                        <div class="text-right">
+                                            <span class="text-xs font-semibold inline-block text-cyan-300">55%</span>
+                                        </div>
+                                    </div>
+                                    <div class="overflow-hidden h-2 mb-1 text-xs flex rounded bg-gray-700">
+                                        <div style="width:55%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-cyan-400"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="smart-home-card p-4">
+                            <div class="flex flex-col items-center text-center">
+                                <i class="fas fa-wifi text-cyan-400 text-2xl mb-2"></i>
+                                <h4 class="font-medium">Connected Devices</h4>
+                                <p class="text-sm text-gray-300 mt-1">Average of 12+ health-related IoT devices in monitored homes</p>
+                            </div>
+                        </div>
+                        
+                        <div class="smart-home-card p-4">
+                            <div class="flex flex-col items-center text-center">
+                                <i class="fas fa-shield-alt text-cyan-400 text-2xl mb-2"></i>
+                                <h4 class="font-medium">Early Detection</h4>
+                                <p class="text-sm text-gray-300 mt-1">28% faster intervention for health emergencies</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 p-4 bg-gradient-to-r from-cyan-900 to-cyan-800 bg-opacity-40 rounded-lg">
+                        <div class="flex items-center">
+                            <i class="fas fa-chart-line text-cyan-400 text-xl mr-3"></i>
+                            <div>
+                                <h4 class="font-medium">Market Growth</h4>
+                                <p class="text-sm">Smart home health tech market projected to reach $5 billion by 2030</p>
+                                <p class="text-xs text-gray-300 mt-1">Source: Business Wire Research, 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="mt-auto flex justify-between items-center z-10">
+            <div class="text-sm opacity-75">
+                <i class="fas fa-home mr-1"></i> impactme.ai
+            </div>
+            <div class="flex items-center text-sm opacity-75">
+                <i class="fas fa-calendar-alt mr-1"></i>
+                <span>April 27-29, 2025</span>
+                <span class="mx-2">|</span>
+                <span>The Marcus Whitman, Walla Walla, WA</span>
+            </div>
+        </div>
+    </div>
+
+<script src="./slide-inner.js.download"></script>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDoJDV7hbDtUq68QkA884fhKHlKcsIp9QQ1N9sdgLqV9rocCcJtmrJ9DoN4nKLW%2FSfzjNah1xrnhSAK9eGYwatZ%2FQVS%2FiNglXR%2B6H4WPL%2Fv1OTyLmshnqUiQ5al64bErlVvjZuunfbkT7YBd3U88QkCajInWPw%2B9vhmEtgVVtHZ6K3o8Xkh2e67jNLTNfhlqRfHu1KMQGYJv5p4XDopUAu595zKouHY6DqvH56x68ml7M1uArfNHlsxUml7TZyEBQ1LM3vgpOsMWvIpUpjhlGN0WnJsoJ0u%2BEqNOfDs%2FFJ8W9VHn5z8L72JLENf44tSAaU3%2FFzNems8m3HPYJGUzKtioC3amDdM%2FWCsiWbKI2tQubNadbMIvFvKfBZIQax6KVugf%2BVGVy%2Bv9Ulspzc%2BmuS4Z%2FBDd37ztH1uBoi7n8gAOt95p0yKvrhQ2XgfedLnE1v8DFCFnHJrnz8JK%2FTwl7ipsrqB%2FZhOZ%2F0TqIVEN%2FE9Uj4FV8rQvipAzc3XejRf2CB4QKmWx0ZbFRFEWYhC6HBn2nsUAh4hqEtChyLf2rYTnCRYHneILtpgvn7Z3C5l6zBX35P%2B5BEuIST1247V1caY%2B7CM2P%2Fw2kXImxsmkzanZrIPu58ZpwCLYCIVYtVuie1MhmL2tQtWzyztT9ryw8h0IH9u9r505vFKGZVMShLsgprBgPXVSgSwYo988WepbyJg%3D%3D";
+        window.__genspark_locale = "en-US";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDoJDV7hbDtUq68QkA884fhKHlKcsIp9QQ1N9sdgLqV9rocCcJtmrJ9DoN4nKLW/SfzjNah1xrnhSAK9eGYwatZ/QVS/iNglXR+6H4WPL/v1OTyLmshnqUiQ5al64bErlVvjZuunfbkT7YBd3U88QkCajInWPw+9vhmEtgVVtHZ6K3o8Xkh2e67jNLTNfhlqRfHu1KMQGYJv5p4XDopUAu595zKouHY6DqvH56x68ml7M1uArfNHlsxUml7TZyEBQ1LM3vgpOsMWvIpUpjhlGN0WnJsoJ0u+EqNOfDs/FJ8W9VHn5z8L72JLENf44tSAaU3/FzNems8m3HPYJGUzKtioC3amDdM/WCsiWbKI2tQubNadbMIvFvKfBZIQax6KVugf+VGVy+v9Ulspzc+muS4Z/BDd37ztH1uBoi7n8gAOt95p0yKvrhQ2XgfedLnE1v8DFCFnHJrnz8JK/Twl7ipsrqB/ZhOZ/0TqIVEN/E9Uj4FV8rQvipAzc3XejRf2CB4QKmWx0ZbFRFEWYhC6HBn2nsUAh4hqEtChyLf2rYTnCRYHneILtpgvn7Z3C5l6zBX35P+5BEuIST1247V1caY+7CM2P/w2kXImxsmkzanZrIPu58ZpwCLYCIVYtVuie1MhmL2tQtWzyztT9ryw8h0IH9u9r505vFKGZVMShLsgprBgPXVSgSwYo988WepbyJg==";
+    </script>
+    </body></html>

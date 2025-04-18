@@ -1,0 +1,8 @@
+.keynote-header[data-v-bd904256] {
+    display: none !important;
+}
+
+/* Also hide any potential spacing that might be reserved for the header */
+.keynote-layout[data-v-bd904256] {
+    padding-top: 0 !important;
+} 

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Home Healthcare Journey with AI: Where We Are and Where We're Going</title>
+    <link href="./tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1a202c;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .presentation-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .slide-container {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .slide-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+        }
+        
+        .slide-frame.active {
+            opacity: 1;
+            z-index: 10;
+        }
+        
+        .controls {
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            z-index: 100;
+            gap: 20px;
+        }
+        
+        .control-button {
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .control-button:hover {
+            background-color: rgba(6, 182, 212, 0.8);
+            transform: translateY(-2px);
+        }
+        
+        .control-button:active {
+            transform: translateY(0);
+        }
+        
+        .slide-indicator {
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        
+        .fullscreen-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.2s ease;
+        }
+        
+        .fullscreen-button:hover {
+            background-color: rgba(6, 182, 212, 0.8);
+        }
+
+        /* Hide controls when not hovering */
+        .controls, .fullscreen-button {
+            opacity: 0.3;
+            transition: opacity 0.3s ease;
+        }
+        
+        body:hover .controls,
+        body:hover .fullscreen-button {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <div class="slide-container" id="slideContainer">
+            <!-- Slides will be loaded here -->
+        </div>
+        
+        <div class="controls">
+            <button class="control-button" id="prevSlide">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="slide-indicator">
+                <span id="currentSlide">1</span> / <span id="totalSlides">20</span>
+            </div>
+            <button class="control-button" id="nextSlide">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        
+        <button class="fullscreen-button" id="fullscreenToggle">
+            <i class="fas fa-expand" id="fullscreenIcon"></i>
+        </button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slideContainer = document.getElementById('slideContainer');
+            const prevButton = document.getElementById('prevSlide');
+            const nextButton = document.getElementById('nextSlide');
+            const currentSlideEl = document.getElementById('currentSlide');
+            const totalSlidesEl = document.getElementById('totalSlides');
+            const fullscreenToggle = document.getElementById('fullscreenToggle');
+            const fullscreenIcon = document.getElementById('fullscreenIcon');
+            
+            // Configuration
+            const totalSlides = 20;
+            let currentSlideIndex = 0;
+            
+            // Update the total slides display
+            totalSlidesEl.textContent = totalSlides;
+            
+            // Create iframes for all slides
+            for (let i = 0; i < totalSlides; i++) {
+                const iframe = document.createElement('iframe');
+                iframe.className = 'slide-frame';
+                iframe.src = `The_Home_Healthcare_Journey_with_AI_2025_Updated_${i}.html`;
+                iframe.setAttribute('frameborder', '0');
+                iframe.setAttribute('scrolling', 'no');
+                iframe.setAttribute('allowfullscreen', 'true');
+                slideContainer.appendChild(iframe);
+            }
+            
+            // Get all slide frames
+            const slideFrames = document.querySelectorAll('.slide-frame');
+            
+            // Function to show a specific slide
+            function showSlide(index) {
+                // Hide all slides
+                slideFrames.forEach(frame => {
+                    frame.classList.remove('active');
+                });
+                
+                // Show the selected slide
+                slideFrames[index].classList.add('active');
+                
+                // Update current slide number
+                currentSlideEl.textContent = index + 1;
+            }
+            
+            // Show the first slide initially
+            showSlide(currentSlideIndex);
+            
+            // Previous slide button
+            prevButton.addEventListener('click', function() {
+                if (currentSlideIndex > 0) {
+                    currentSlideIndex--;
+                    showSlide(currentSlideIndex);
+                }
+            });
+            
+            // Next slide button
+            nextButton.addEventListener('click', function() {
+                if (currentSlideIndex < totalSlides - 1) {
+                    currentSlideIndex++;
+                    showSlide(currentSlideIndex);
+                }
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'ArrowLeft' || event.key === 'PageUp') {
+                    if (currentSlideIndex > 0) {
+                        currentSlideIndex--;
+                        showSlide(currentSlideIndex);
+                    }
+                } else if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') {
+                    if (currentSlideIndex < totalSlides - 1) {
+                        currentSlideIndex++;
+                        showSlide(currentSlideIndex);
+                    }
+                }
+            });
+            
+            // Fullscreen toggle
+            fullscreenToggle.addEventListener('click', function() {
+                if (!document.fullscreenElement) {
+                    document.documentElement.requestFullscreen().catch(err => {
+                        console.error(`Error attempting to enable fullscreen: ${err.message}`);
+                    });
+                    fullscreenIcon.classList.remove('fa-expand');
+                    fullscreenIcon.classList.add('fa-compress');
+                } else {
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                        fullscreenIcon.classList.remove('fa-compress');
+                        fullscreenIcon.classList.add('fa-expand');
+                    }
+                }
+            });
+            
+            // Update icon when fullscreen changes
+            document.addEventListener('fullscreenchange', function() {
+                if (document.fullscreenElement) {
+                    fullscreenIcon.classList.remove('fa-expand');
+                    fullscreenIcon.classList.add('fa-compress');
+                } else {
+                    fullscreenIcon.classList.remove('fa-compress');
+                    fullscreenIcon.classList.add('fa-expand');
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

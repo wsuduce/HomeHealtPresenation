@@ -32,6 +32,7 @@ build/
 out/
 *.min.js
 *.min.css
+!tailwind.min.css
 
 # Logs
 logs/

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Home Healthcare Journey with AI: Where We Are and Where We're Going</title>
@@ -50,6 +51,7 @@
         .slide-frame.active {
             opacity: 1;
             z-index: 10;
+            
         }
         
         .controls {
@@ -217,7 +219,7 @@
                 }
             });
             
-            // Keyboard navigation
+            // Keyboard navigation - this is for the keyboard navigation
             document.addEventListener('keydown', function(event) {
                 if (event.key === 'ArrowLeft' || event.key === 'PageUp') {
                     if (currentSlideIndex > 0) {
@@ -232,6 +234,7 @@
                 }
             });
             
+            //fullscreen
             // Fullscreen toggle
             fullscreenToggle.addEventListener('click', function() {
                 if (!document.fullscreenElement) {

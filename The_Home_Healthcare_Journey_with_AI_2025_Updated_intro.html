@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Home Healthcare Journey with AI</title>
     <link href="./tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
         
@@ -69,6 +69,26 @@
             left: -50px;
             z-index: 0;
         }
+        .grace-image {
+            border-radius: 18px;
+            border: 4px solid #0bc5ea;
+            box-shadow: 0 4px 24px rgba(11,197,234,0.10), 0 2px 8px rgba(0,0,0,0.10);
+            max-width: 340px;
+            max-height: 340px;
+            object-fit: cover;
+            margin-right: 40px;
+            background: #111927;
+        }
+        @media (max-width: 900px) {
+            .intro-flex {
+                flex-direction: column;
+                align-items: center;
+            }
+            .grace-image {
+                margin-right: 0;
+                margin-bottom: 24px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -77,36 +97,38 @@
         <div class="circle-sm"></div>
         <div class="ai-circle"></div>
         
-        <div class="z-10 flex-grow">
-            <!-- Header -->
-            <div class="mt-16 mb-10">
-                <h1 class="text-5xl font-bold leading-tight">The Home Healthcare Journey with AI</h1>
-                <h2 class="text-3xl font-light text-cyan-400 mt-2">Where We Are and Where We're Going</h2>
-            </div>
-            
-            <!-- Presenter Info -->
-            <div class="mb-12">
-                <h3 class="text-2xl font-semibold">Adam Murphy</h3>
-                <p class="text-gray-300">Technology Visionary | AI-Human Integration Leader</p>
-                <p class="text-cyan-400 text-sm mt-2">HCAW 2025 Annual Conference</p>
-            </div>
-            
-            <!-- Opening Story -->
-            <div class="story-quote max-w-2xl z-10 mt-6">
-                <p class="text-lg leading-relaxed">
-                    "A woman named Grace, age 86, lives alone. Her children check in by phone once a day. But it wasn't until her AI-powered monitoring device detected changes in her gait and flagged early signs of a stroke that emergency care arrived in time. Grace is alive today—because an algorithm noticed something we might not have."
-                </p>
-                <div class="mt-4 flex items-center text-cyan-300">
-                    <i class="fas fa-info-circle mr-2"></i>
-                    <p class="text-sm">75% of seniors want to age in place, but 70% will need long-term care assistance. <span class="text-xs opacity-75">(Source: AARP)</span></p>
+        <div class="z-10 flex-grow flex flex-col h-full justify-between">
+            <!-- Top: Title & Presenter Info -->
+            <div>
+                <div class="mt-16 mb-10">
+                    <h1 class="text-5xl font-bold leading-tight">The Home Healthcare Journey with AI</h1>
+                    <h2 class="text-3xl font-light text-cyan-400 mt-2">Where We Are and Where We're Going</h2>
                 </div>
+                <div class="mb-12">
+                    <h3 class="text-2xl font-semibold">Adam Murphy</h3>
+                    <p class="text-gray-300">Technology Visionary | AI-Human Integration Leader</p>
+                    <p class="text-cyan-400 text-sm mt-2">HCAW 2025 Annual Conference</p>
+                </div>
+            </div>
+            <!-- Bottom: Story & Image -->
+            <div class="flex flex-row items-end gap-10 mt-6 story-image-row">
+                <div class="story-quote max-w-2xl z-10 flex-1">
+                    <p class="text-lg leading-relaxed">
+                        "A woman named Grace, age 86, lives alone. Her children check in by phone once a day. But it wasn't until her AI-powered monitoring device detected changes in her gait and flagged early signs of a stroke that emergency care arrived in time. Grace is alive today—because an algorithm noticed something we might not have."
+                    </p>
+                    <div class="mt-4 flex items-center text-cyan-300">
+                        <i class="fas fa-info-circle mr-2"></i>
+                        <p class="text-sm">75% of seniors want to age in place, but 70% will need long-term care assistance. <span class="text-xs opacity-75">(Source: AARP)</span></p>
+                    </div>
+                </div>
+                <img src="./Grace.png" alt="Grace's Story" class="grace-image mb-0" />
             </div>
         </div>
         
         <!-- Footer -->
-        <div class="mt-auto flex justify-between items-center z-10">
+        <div class="mt-auto flex justify-between items-center z-10 pt-8 pb-2 px-2 footer-bar">
             <div class="text-sm opacity-75">
-                <i class="fas fa-home mr-1"></i> impactme.ai
+                <i class="fas fa-home mr-1"></i> impactMe.ai
             </div>
             <div class="flex items-center text-sm opacity-75">
                 <i class="fas fa-calendar-alt mr-1"></i>

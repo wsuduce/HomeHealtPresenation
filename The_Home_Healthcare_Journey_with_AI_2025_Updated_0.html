@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me - Adam Murphy</title>
     <link href="./tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
         
@@ -44,13 +44,23 @@
             width: 100%;
             height: 280px;
             background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            border-radius: 16px;
+            overflow: hidden;
             margin-bottom: 24px;
-            border: 1px dashed rgba(6, 182, 212, 0.3);
+            border: 3px solid rgba(6, 182, 212, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-placeholder:hover {
+            transform: scale(1.02);
+        }
+
+        .photo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
         }
         
         .story-box {
@@ -126,6 +136,26 @@
             justify-content: center;
             margin-bottom: 8px;
         }
+
+        .image-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border: 4px solid rgba(6, 182, 212, 0.3);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
     </style>
 <style id="slide-selected-style">
   [data-slide-selected]::before {
@@ -162,6 +192,10 @@
         <div class="circle-sm"></div>
         <div class="ai-circle"></div>
         
+        <div class="image-container">
+            <img src="./Rach.jpg" alt="Rach" />
+        </div>
+        
         <div class="z-10 flex-grow">
             <!-- Header -->
             <div class="mb-8">
@@ -173,10 +207,9 @@
             <div class="grid grid-cols-12 gap-8">
                 <!-- Left Column - Photo & Family -->
                 <div class="col-span-5">
-                    <!-- Photo Placeholder -->
+                    <!-- Photo Area -->
                     <div class="photo-placeholder">
-                        <i class="fas fa-images text-cyan-400 text-5xl mb-3"></i>
-                        <p class="text-center text-gray-300">Family Photo with Chickens</p>
+                        <img src="./Rach.jpg" alt="Family Photo with Chickens" />
                     </div>
                     
                     <!-- Family Icons -->
